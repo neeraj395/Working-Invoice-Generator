@@ -102,7 +102,7 @@
             <td id="totalAmountInFigure"></td>
         </tr>
         <tr>
-            <td>Tax Amount (CGST + SGST) in Words:</td>
+            <td>Tax Amount in Words:</td>
             <td id="gstAmountInWords"></td>
         </tr>
     </table>
@@ -111,12 +111,129 @@
     </div>
 </div>
 
-<script src="script.js" defer>
+<script>
+    // Function to retrieve data from session storage
+    function getDataFromSessionStorage() {
+        const data = sessionStorage.getItem('invoiceData');
+        return data ? JSON.parse(data) : null;
+    }
+
+    // Function to populate tax invoice details
+    function populateTaxInvoiceDetails() {
+        // Retrieve data from session storage
+        const data = getDataFromSessionStorage();
+
+        // Populate tax invoice details if data exists
+        if (data) {
+            // Populate invoice details
+            document.getElementById("invoiceNumber").textContent = data.invoiceNo;
+            document.getElementById("invoiceDate").textContent = data.invoiceDate;
+            document.getElementById("poNumber").textContent = data.poNo;
+            document.getElementById("poDate").textContent = data.poDate;
+            document.getElementById("hsnCode").textContent = data.hsnCode;
+            document.getElementById("vehicleNumber").textContent = data.vehicleNo;
+
+            // Populate consignee details
+            document.getElementById("consigneeName").textContent = data.consigneeName;
+            document.getElementById("consigneeAddressLine1").textContent = data.addressLine1;
+            document.getElementById("consigneeAddressLine2").textContent = data.addressLine2;
+            document.getElementById("consigneeGSTIN").textContent = data.gstin;
+
+            // Populate item details
+            const itemDetailsTable = document.getElementById("itemDetails").getElementsByTagName('tbody')[0];
+            const itemDetails = data.itemDetails;
+
+            let totalAmount = 0; // Initialize total amount
+
+            itemDetails.forEach(item => {
+    const row = itemDetailsTable.insertRow();
+    const descriptionCell = row.insertCell(0);
+    const quantityCell = row.insertCell(1);
+    const unitPriceCell = row.insertCell(2);
+    const totalCell = row.insertCell(3);
+
+    descriptionCell.textContent = item.description;
+    quantityCell.textContent = item.quantity;
+
+    // Display unit price as string directly
+    unitPriceCell.textContent = String(item.unitPrice);
+
+    // Calculate and display total item amount
+    const totalItemAmount = item.quantity * item.unitPrice;
+    totalCell.textContent = totalItemAmount.toFixed(2); // Display total item amount with 2 decimal places
+
+    totalAmount += totalItemAmount; // Accumulate total amount
+});
 
 
+   // Populate total amount in words and figure
+            document.getElementById("totalAmountInWords").textContent = convertAmountToWords(totalAmount);
+            document.getElementById("totalAmountInFigure").textContent = totalAmount.toFixed(2);
+
+            // Populate GST amount in words
+            const gstAmount = totalAmount * 0.18; // Assuming 18% GST
+            document.getElementById("gstAmountInWords").textContent = convertAmountToWords(gstAmount);
+        } else {
+            console.error("No data found in session storage.");
+        }
+    }
+
+    // Function to convert amount to words
+    function convertAmountToWords(amount) {
+        const units = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+    const teens = ["", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+    const tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+
+    if (number === 0) return "Zero";
+
+    let words = "";
+
+    // Handle lakhs and crores
+    if (number >= 10000000) {
+        words += convertToIndianWords(Math.floor(number / 10000000)) + " Crore ";
+        number %= 10000000;
+    }
+    if (number >= 100000) {
+        words += convertToIndianWords(Math.floor(number / 100000)) + " Lakh ";
+        number %= 100000;
+    }
+
+    // Handle thousands
+    if (number >= 1000) {
+        words += convertToIndianWords(Math.floor(number / 1000)) + " Thousand ";
+        number %= 1000;
+    }
+
+    // Handle hundreds
+    if (number >= 100) {
+        words += convertToIndianWords(Math.floor(number / 100)) + " Hundred ";
+        number %= 100;
+    }
+
+    // Handle tens and units
+    if (number > 0) {
+        if (number < 10) {
+            words += units[number] + " ";
+        } else if (number < 20) {
+            words += teens[number - 10] + " ";
+        } else {
+            words += tens[Math.floor(number / 10)] + " ";
+            if (number % 10 > 0) {
+                words += units[number % 10] + " ";
+            }
+        }
+    }
+
+    return words.trim();
+}
+    
+
+
+    // Call populateTaxInvoiceDetails function when the tax invoice page loads
+    window.onload = function() {
+        populateTaxInvoiceDetails(); // Populate tax invoice details
+    };
 </script>
-
-
 
 </body>
 </html>
