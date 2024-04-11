@@ -91,11 +91,57 @@
     </div>
 </div>
 
-<script src="script.js" defer>
+<script>
+   // Function to retrieve data from session storage
+function getDataFromSessionStorage() {
+    const data = sessionStorage.getItem('invoiceData');
+    return data ? JSON.parse(data) : null;
+}
+
+
+// Function to populate delivery challan details
+function populateDeliveryChallanDetails() {
+    // Retrieve data from session storage
+    const data = getDataFromSessionStorage();
+
+    // Populate delivery challan details if data exists
+    if (data) {
+        // Populate invoice details
+        document.getElementById("invoiceNumber").textContent = data.invoiceNo;
+        document.getElementById("invoiceDate").textContent = data.invoiceDate;
+        document.getElementById("poNumber").textContent = data.poNo;
+        document.getElementById("poDate").textContent = data.poDate;
+        document.getElementById("hsnCode").textContent = data.hsnCode;
+        document.getElementById("vehicleNumber").textContent = data.vehicleNo;
+
+        // Populate consignee details
+        document.getElementById("consigneeName").textContent = data.consigneeName;
+        document.getElementById("consigneeAddressLine1").textContent = data.addressLine1;
+        document.getElementById("consigneeAddressLine2").textContent = data.addressLine2;
+        document.getElementById("consigneeGSTIN").textContent = data.gstin;
+
+        // Populate item details
+        const itemDetailsTable = document.getElementById("itemDetails").getElementsByTagName('tbody')[0];
+        const itemDetails = data.itemDetails;
+
+        itemDetails.forEach(item => {
+            const row = itemDetailsTable.insertRow();
+            const descriptionCell = row.insertCell(0);
+            const quantityCell = row.insertCell(1);
+
+            descriptionCell.textContent = item.itemName; // Display item name
+            quantityCell.textContent = item.quantity;
+        });
+    } else {
+        console.error("No data found in session storage.");
+    }
+}
+
+
+// Call populateDeliveryChallanDetails function when the delivery challan page loads
+window.onload = populateDeliveryChallanDetails;
 
 </script>
-
-
 
 </body>
 </html>
