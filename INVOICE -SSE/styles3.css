@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Set background to white */
+    color: #000; /* Set text color to black */
+}
+
+.invoice-container {
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Set background to white */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000; /* Set heading color to black */
+}
+
+.company-address {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000; /* Set border color to black */
+    margin-bottom: 20px;
+}
+
+.company-address h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #000; /* Set text color to black */
+}
+
+.company-address p {
+    margin: 5px 0;
+    color: #000; /* Set text color to black */
+}
+
+.invoice-info {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.invoice-info table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-info table th,
+.invoice-info table td {
+    padding: 10px;
+    border: 1px solid #000; /* Set border color to black */
+    text-align: left;
+}
+
+.invoice-info table th {
+    color: #000; /* Set text color to black */
+}
+
+.consignee-bank-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.consignee-address,
+.bank-details {
+    width: calc(50% - 10px);
+    padding: 20px;
+    background-color: #fff; /* Set background to white */
+    border-radius: 5px;
+    border: 1px solid #000; /* Set border color to black */
+}
+
+.consignee-address h3,
+.bank-details h3 {
+    margin-top: 0;
+    color: #000; /* Set text color to black */
+}
+
+.consignee-address p,
+.bank-details p {
+    margin: 5px 0;
+    color: #000; /* Set text color to black */
+}
+
+.total-table {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.total-table th,
+.total-table td {
+    border: 1px solid #000; /* Set border color to black */
+    padding: 10px;
+}
+
+.authorized-signature {
+    margin-top: auto;
+    text-align: center;
+}
+
+.authorized-signature p {
+    margin: 0;
+    font-weight: bold;
+    color: #000; /* Set text color to black */
+}
+
+.items-table {
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.items-table th,
+.items-table td {
+    border: 1px solid #000; /* Set border color to black */
+    padding: 10px;
+}

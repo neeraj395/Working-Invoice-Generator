@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Challan</title>
+<link rel="stylesheet" type="text/css" href="styles3.css">
+</head>
+<body>
+<div class="invoice-container">
+    <div class="header-container">
+        <div class="logo">
+            <!-- Insert your company logo here -->
+            <img src="logo.png" alt="Company Logo">
+        </div>
+        <div class="heading">
+            DELIVERY CHALLAN
+        </div>
+    </div>
+    <div class="company-address">
+        <h2>SRI SARADA ENGINEERING</h2>
+        <p>A2, Co-operative Industrial Estate, Balanagar</p>
+        <p>Hyderabad, Telanagana, 500037</p>
+        <p>Phone: +919951888397</p>
+        <p>Email: srisaradaengg@gmail.com</p>
+    </div>
+    <div class="invoice-info">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Invoice Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Invoice No:</td>
+                    <td id="invoiceNumber">INV-001</td>
+                </tr>
+                <tr>
+                    <td>Invoice Date:</td>
+                    <td id="invoiceDate">April 10, 2024</td>
+                </tr>
+                <tr>
+                    <td>PO No:</td>
+                    <td id="poNumber">PO-123</td>
+                </tr>
+                <tr>
+                    <td>PO Date:</td>
+                    <td id="poDate">April 5, 2024</td>
+                </tr>
+                <tr>
+                    <td>HSN Code:</td>
+                    <td id="hsnCode">123456</td>
+                </tr>
+                <tr>
+                    <td>Vehicle No:</td>
+                    <td id="vehicleNumber">ABC123</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="consignee-bank-container">
+        <div class="consignee-address" id="consigneeAddressSection">
+            <h3>Consignee Address</h3>
+            <p id="consigneeName"> COnsignee Name</p>
+            <p id="consigneeAddressLine1">Address Line 1</p>
+            <p id="consigneeAddressLine2">Address Line 2</p>
+            <p id="consigneeGSTIN">GSTIN NUMBER </p> <!-- Add GSTIN field -->
+
+        </div>
+        <div class="bank-details">
+            <h3>Bank Details</h3>
+            <p>Bank Name: XYZ Bank</p>
+            <p>Account No: 1234567890</p>
+            <p>IFSC Code: ABCD1234</p>
+        </div>
+    </div>
+    <table class="items-table" id="itemDetails">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Item details will be dynamically added here -->
+        </tbody>
+    </table>
+    <div class="authorized-signature">
+        <p>Authorized Signature</p>
+    </div>
+</div>
+
+<script src="script.js" defer>
+
+</script>
+
+
+
+</body>
+</html>

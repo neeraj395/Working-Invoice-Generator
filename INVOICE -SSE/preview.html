@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    
+    
+<div class="preview-container">
+    <h1>PREVIEW</h1>
+    
+    <!-- Invoice Details -->
+    <h2>Invoice Details</h2>
+    <table>
+        <tr>
+            <th>Invoice No</th>
+            <td id="previewInvoiceNo"></td>
+        </tr>
+        <tr>
+            <th>Invoice Date</th>
+            <td id="previewInvoiceDate"></td>
+        </tr>
+        <tr>
+            <th>PO No</th>
+            <td id="previewPONo"></td>
+        </tr>
+        <tr>
+            <th>PO Date</th>
+            <td id="previewPODate"></td>
+        </tr>
+        <tr>
+            <th>HSN Code</th>
+            <td id="previewHSNCode"></td>
+        </tr>
+        <tr>
+            <th>Vehicle No</th>
+            <td id="previewVehicleNo"></td>
+        </tr>
+    </table>
+
+    <!-- Consignee Details -->
+    <h2>Consignee Details</h2>
+    <table>
+        <tr>
+            <th>Consignee Name</th>
+            <td id="previewConsigneeName"></td>
+        </tr>
+        <tr>
+            <th>Address Line 1</th>
+            <td id="previewAddressLine1"></td>
+        </tr>
+        <tr>
+            <th>Address Line 2</th>
+            <td id="previewAddressLine2"></td>
+        </tr>
+        <tr>
+            <th>GSTIN No</th>
+            <td id="previewGSTIN"></td>
+        </tr>
+    </table>
+
+    <table id="previewItemDetails">
+        <h2>Item Details</h2>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamically filled item details will be here -->
+        </tbody>
+    </table>
+    
+
+
+    <!-- Money Calculation -->
+    <h2>Money Calculation</h2>
+    <table>
+        <tr>
+            <th>Total Amount</th>
+            <td id="previewTotalAmount"></td>
+        </tr>
+        <tr>
+            <th>Total Tax Amount</th>
+            <td id="previewTotalTaxAmount"></td>
+        </tr>
+        <tr>
+            <th>Total Amount in Words</th>
+            <td id="previewTotalAmountInWords"></td>
+        </tr>
+    </table>
+
+    <button type="button" onclick="redirectToGeneratePage()">Generate Invoice</button>
+    <script>
+        function redirectToGeneratePage() {
+            window.location.href = "generate.html";
+        }
+        </script>
+
+</div>
+
+<script src="script.js" defer></script>
+
+
+<script>
+    window.onload = function() {
+        previewInvoice(); // Redirects from invoice to preview page
+        loadPreviewData(); // Loads data from session storage
+        calculateAmount(); // Calculates money details
+    };
+</script>
+
+</body>
+</html>

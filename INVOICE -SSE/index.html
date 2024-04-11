@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Form</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Invoice Form</h1>
+    <form id="invoiceForm">
+        <!-- Invoice Details Section -->
+        <fieldset>
+            <legend>Invoice Details</legend>
+            <label for="invoiceNo">Invoice No:</label>
+            <input type="text" id="invoiceNo" name="invoiceNo" required><br>
+            
+            <label for="invoiceDate">Invoice Date:</label>
+            <input type="date" id="invoiceDate" name="invoiceDate" required><br>
+            
+            <label for="poNo">PO No:</label>
+            <input type="text" id="poNo" name="poNo"><br>
+            
+            <label for="poDate">PO Date:</label>
+            <input type="date" id="poDate" name="poDate"><br>
+            
+            <label for="hsnCode">HSN Code:</label>
+            <input type="text" id="hsnCode" name="hsnCode"><br>
+            
+            <label for="vehicleNo">Vehicle No:</label>
+            <input type="text" id="vehicleNo" name="vehicleNo"><br>
+        </fieldset>
+        
+        <!-- Consignee Details Section -->
+        <fieldset>
+            <legend>Consignee Details</legend>
+            <label for="consigneeName">Consignee Name:</label>
+            <input type="text" id="consigneeName" name="consigneeName" required><br>
+            
+            <label for="addressLine1">Address Line 1:</label>
+            <input type="text" id="addressLine1" name="addressLine1" required><br>
+            
+            <label for="addressLine2">Address Line 2:</label>
+            <input type="text" id="addressLine2" name="addressLine2"><br>
+            
+            <label for="gstin">GSTIN No:</label>
+            <input type="text" id="gstin" name="gstin"><br>
+        </fieldset>
+        
+        <!-- Item Details Section -->
+        <fieldset>
+            <legend>Item Details</legend>
+            <div id="itemDetails">
+                <div class="item-row">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" class="itemName" name="itemName[]" required>
+                    
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="quantity" name="quantity[]" required>
+                    
+                    <label for="unitPrice">Unit Price:</label>
+                    <input type="number" class="unitPrice" name="unitPrice[]" required>
+                </div>
+            </div>
+            <button type="button" id="addItemBtn" onclick="addItem()">Add Item</button>
+<button type="button" id="previewInvoiceBtn" onclick="previewInvoice()">Preview Invoice</button>
+        </fieldset>
+        
+        
+
+    </form>
+</div>
+
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
